@@ -13,7 +13,7 @@ struct Node{
 /* implement your Queue class here */
 class queue{
   private:
-     Node* start;
+     Node* front;
      Node* rear;
      int counter;
   public:
@@ -21,7 +21,7 @@ class queue{
     ~queue();
     void Join(float newthing);
     void Leave();
-    float front();
+    float start();
     bool isEmpty();
 };
 
