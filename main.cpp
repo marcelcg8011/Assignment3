@@ -70,6 +70,16 @@ void Queue:: Join(float newthing)
   if(front == NULL) {front = temp;}
 }
 
+void Queue:: Leave()
+{
+  Node* temp;
+  if (front == NULL) {return;}
+  temp = front;
+  front = front -> next;
+  if(front == NULL) {rear = NULL;}
+  delete temp;
+}
+
 
 main( int argc, char** argv )
 {//get arguments from command line, the name of the simulation text file
