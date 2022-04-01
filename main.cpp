@@ -25,41 +25,6 @@ class Queue{
     bool isEmpty();
 };
 
-
-
-////////////////////////////////////////////////////////////////////////
-
-#define TIMEDELAY 3 //DO NOT CHANGE THIS VALUE!!!
-#define N 128 //DO NOT CHANGE THIS VALUE!!!
-int OutQueues_current[N];
-int Congestion_Size[N];
-
-/*include your array of queues declarations somewhere here, for example: */
-//Queue InputQueues[N];
-//Queue OutputQueues[N];
-
-
-void init_simulation()
-{
-  for(int a=0;a<N;a++)
-  {
-    OutQueues_current[a]=0;
-    Congestion_Size[a]=0;
-  }
-}
-
-int sum_elements_array(int array[])
-{
-  int sum=0;
-  for(int a=0;a<N;a++)
-  {
-    sum=sum+array[a];
-  }
-  return sum;
-}
-
-int number_of_ports=0;
-
 Queue::Queue()
 {
   front = NULL;
@@ -98,6 +63,41 @@ bool Queue:: isEmpty()
   if (front == NULL) {return true;}
   return false;
 }
+
+////////////////////////////////////////////////////////////////////////
+
+#define TIMEDELAY 3 //DO NOT CHANGE THIS VALUE!!!
+#define N 128 //DO NOT CHANGE THIS VALUE!!!
+int OutQueues_current[N];
+int Congestion_Size[N];
+
+/*include your array of queues declarations somewhere here, for example: */
+//Queue InputQueues[N];
+//Queue OutputQueues[N];
+
+
+void init_simulation()
+{
+  for(int a=0;a<N;a++)
+  {
+    OutQueues_current[a]=0;
+    Congestion_Size[a]=0;
+  }
+}
+
+int sum_elements_array(int array[])
+{
+  int sum=0;
+  for(int a=0;a<N;a++)
+  {
+    sum=sum+array[a];
+  }
+  return sum;
+}
+
+int number_of_ports=0;
+
+
 
 main( int argc, char** argv )
 {//get arguments from command line, the name of the simulation text file
