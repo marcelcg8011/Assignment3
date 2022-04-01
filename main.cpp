@@ -6,8 +6,24 @@
 #include <string>
 using namespace std;
 
+struct Node{
+  float data;
+  Node* next;
+};
 /* implement your Queue class here */
-
+class queue{
+  private:
+     Node* start;
+     Node* rear;
+     int counter;
+  public:
+    queue();
+    ~queue();
+    void Join(float newthing);
+    void Leave();
+    float front();
+    bool isEmpty();
+};
 
 
 
@@ -43,6 +59,7 @@ int sum_elements_array(int array[])
 }
 
 int number_of_ports=0;
+
 
 main( int argc, char** argv )
 {//get arguments from command line, the name of the simulation text file
