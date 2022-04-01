@@ -23,16 +23,20 @@ int Congestion_Size[N];
 //Queue OutputQueues[N];
 
 
-void init_simulation(){
-  for(int a=0;a<N;a++){
+void init_simulation()
+{
+  for(int a=0;a<N;a++)
+  {
     OutQueues_current[a]=0;
     Congestion_Size[a]=0;
   }
 }
 
-int sum_elements_array(int array[]){
+int sum_elements_array(int array[])
+{
   int sum=0;
-  for(int a=0;a<N;a++){
+  for(int a=0;a<N;a++)
+  {
     sum=sum+array[a];
   }
   return sum;
@@ -40,8 +44,10 @@ int sum_elements_array(int array[]){
 
 int number_of_ports=0;
 
-main( int argc, char** argv ){//get arguments from command line, the name of the simulation text file
+main( int argc, char** argv )
+{//get arguments from command line, the name of the simulation text file
   //read the file, print the input ports contents
+
   int portnumber=0;
   int destination=0;
   //char oper;
@@ -50,14 +56,18 @@ main( int argc, char** argv ){//get arguments from command line, the name of the
   ifstream input_file;
   if(argc!=2) {cout<< "Type a file name. " << endl << argv[1] << endl; exit(0);}
   input_file.open(argv[1]);
-  if(input_file.is_open()==false) {cout << "Could not read file: " << endl << argv[1] << endl; exit(0);}
+  if(input_file.is_open()==false)
+  {cout << "Could not read file: " << endl << argv[1] << endl; exit(0);}
   string token;
-  while(!input_file.eof()){
+  while(!input_file.eof())
+  {
      getline(input_file,expression);
      stringstream line(expression);
      if(input_file.eof()) break;
      if(expression[0] =='#') continue;//jump line, this is a line of comments
-     if(expression[0] =='P') {
+
+     if(expression[0] =='P')
+     {
        getline(line, token,' ');
        getline(line, token,' ');
        number_of_ports=atoi(token.c_str());
@@ -70,11 +80,13 @@ main( int argc, char** argv ){//get arguments from command line, the name of the
 
      cout << "Port " << portnumber << ": " << endl;//DEBUG, comment for final version
 
-     while(getline(line, token,' ')){
+     while(getline(line, token,' '))
+     {
        int destination;
        //destination = stoi(token);//only works with option -std=c++11
        destination = atoi(token.c_str());//use this one if your compiler is not C++11
-       if (destination < 0 || destination > number_of_ports || number_of_ports<portnumber) {cout << "ERROR in the format of the text file" << endl; exit(0);}
+       if (destination < 0 || destination > number_of_ports || number_of_ports<portnumber)
+       {cout << "ERROR in the format of the text file" << endl; exit(0);}
     //
     // include the input queue code here
 
@@ -93,7 +105,9 @@ main( int argc, char** argv ){//get arguments from command line, the name of the
   unsigned long int clock=0;
   unsigned long int currentsum=99999999;//sum_elements_array(OutQueues_current);
   portnumber=0;
-  while(currentsum>0){
+
+  while(currentsum>0)
+  {
     cout << "Input portnumber " << portnumber+1 << endl;//DEBUG, comment for final version
     /*if(QUEUE[portnumber]){
 
@@ -121,14 +135,16 @@ main( int argc, char** argv ){//get arguments from command line, the name of the
     //
     //compute the current state of the output queues
     cout << "Current sum: " << currentsum << endl;//DEBUG, comment for final version
-    if(currentsum > sum_elements_array(Congestion_Size)){
+    if(currentsum > sum_elements_array(Congestion_Size))
+    {
       for(int a=0;a<number_of_ports;a++){
 	Congestion_Size[a]=OutQueues_current[a];
       }
     }
   }
   //FINAL PRINTOUT, remember to comment out all the other debugging printouts above
-  for(int a=0;a<number_of_ports;a++){
+  for(int a=0;a<number_of_ports;a++)
+  {
     cout << "output port " << a+1 << ": " << Congestion_Size[a] << " packets" << endl;
   }
 }
