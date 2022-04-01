@@ -60,6 +60,13 @@ int sum_elements_array(int array[])
 
 int number_of_ports=0;
 
+Queue::Queue()
+{
+  front = NULL;
+  rear = NULL;
+  counter = 0;
+}
+
 void Queue:: Join(float newthing)
 {
   Node* temp;
@@ -69,6 +76,7 @@ void Queue:: Join(float newthing)
   rear = temp;
   if(front == NULL) {front = temp;}
 }
+
 
 void Queue:: Leave()
 {
@@ -106,7 +114,7 @@ main( int argc, char** argv )
   if(input_file.is_open()==false)
   {cout << "Could not read file: " << endl << argv[1] << endl; exit(0);}
   string token;
-  
+
   while(!input_file.eof())
   {
      getline(input_file,expression);
