@@ -97,8 +97,6 @@ int sum_elements_array(int array[])
 
 int number_of_ports=0;
 
-
-
 main( int argc, char** argv )
 {//get arguments from command line, the name of the simulation text file
   //read the file, print the input ports contents
@@ -127,7 +125,7 @@ main( int argc, char** argv )
        getline(line, token,' ');
        getline(line, token,' ');
        number_of_ports=atoi(token.c_str());
-       //cout << "Found the number of ports to be " << number_of_ports << endl;
+       // cout << "Found the number of ports to be " << number_of_ports << endl;
        continue;//got the number of ports
      }
 
