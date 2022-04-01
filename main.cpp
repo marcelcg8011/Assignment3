@@ -11,14 +11,14 @@ struct Node{
   Node* next;
 };
 /* implement your Queue class here */
-class queue{
+class Queue{
   private:
      Node* front;
      Node* rear;
      int counter;
   public:
-    queue();
-    ~queue();
+    Queue();
+    ~Queue();
     void Join(float newthing);
     void Leave();
     float start();
@@ -59,6 +59,16 @@ int sum_elements_array(int array[])
 }
 
 int number_of_ports=0;
+
+void Queue:: Join(float newthing)
+{
+  Node* temp;
+  temp = new Node;
+  temp -> data = newthing;
+  if(rear!=NULL) {rear->next=temp;}
+  rear = temp;
+  if(front == NULL) {front = temp;}
+}
 
 
 main( int argc, char** argv )
