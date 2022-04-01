@@ -80,6 +80,10 @@ void Queue:: Leave()
   delete temp;
 }
 
+float Queue:: start()
+{
+  return front -> data;
+}
 
 main( int argc, char** argv )
 {//get arguments from command line, the name of the simulation text file
