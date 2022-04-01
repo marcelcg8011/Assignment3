@@ -90,6 +90,7 @@ bool Queue:: isEmpty()
   if (front == NULL) {return true;}
   return false;
 }
+
 main( int argc, char** argv )
 {//get arguments from command line, the name of the simulation text file
   //read the file, print the input ports contents
@@ -105,6 +106,7 @@ main( int argc, char** argv )
   if(input_file.is_open()==false)
   {cout << "Could not read file: " << endl << argv[1] << endl; exit(0);}
   string token;
+  
   while(!input_file.eof())
   {
      getline(input_file,expression);
