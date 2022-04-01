@@ -6,8 +6,24 @@
 #include <string>
 using namespace std;
 
+struct Node{
+  float data;
+  Node* next;
+};
 /* implement your Queue class here */
-
+class Queue{
+  private:
+     Node* front;
+     Node* rear;
+     int counter;
+  public:
+    Queue();
+    ~Queue();
+    void Join(float newthing);
+    void Leave();
+    float start();
+    bool isEmpty();
+};
 
 
 
@@ -44,6 +60,37 @@ int sum_elements_array(int array[])
 
 int number_of_ports=0;
 
+void Queue:: Join(float newthing)
+{
+  Node* temp;
+  temp = new Node;
+  temp -> data = newthing;
+  if(rear!=NULL) {rear->next=temp;}
+  rear = temp;
+  if(front == NULL) {front = temp;}
+}
+
+void Queue:: Leave()
+{
+  Node* temp;
+  if (front == NULL) {return;}
+  temp = front;
+  front = front -> next;
+  if(front == NULL) {rear = NULL;}
+  delete temp;
+}
+
+float Queue:: start()
+{
+  return front -> data;
+}
+
+bool Queue:: isEmpty()
+{
+  if (front == NULL) {return true;}
+  return false;
+}
+
 main( int argc, char** argv )
 {//get arguments from command line, the name of the simulation text file
   //read the file, print the input ports contents
@@ -59,6 +106,7 @@ main( int argc, char** argv )
   if(input_file.is_open()==false)
   {cout << "Could not read file: " << endl << argv[1] << endl; exit(0);}
   string token;
+  
   while(!input_file.eof())
   {
      getline(input_file,expression);
