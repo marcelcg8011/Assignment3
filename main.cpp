@@ -85,6 +85,11 @@ float Queue:: start()
   return front -> data;
 }
 
+bool Queue:: isEmpty()
+{
+  if (front == NULL) {return true;}
+  return false;
+}
 main( int argc, char** argv )
 {//get arguments from command line, the name of the simulation text file
   //read the file, print the input ports contents
